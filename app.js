@@ -14,6 +14,8 @@ mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log('Connected to MongoDb Atlas'))
     .catch(err => console.log(err));
 
+// The below is also a way to connect to atlas mongo db connection
+
 // const db = mongoose.connection;
 // db.on('error', console.error.bind(console, 'Connection error'));
 // db.once('open', () => {
