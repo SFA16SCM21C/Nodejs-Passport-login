@@ -24,6 +24,11 @@ router.post('/register', (req, res) => {
     if (password !== password2) {
         errors.push({ msg: 'Passwords do not match' });
     }
+
+    // checking for password length
+    if (password.length < 6) {
+        errors.push({ msg: 'Password should have a minmum length of 6 characters'});
+    }
 });
 
 module.exports = router;
