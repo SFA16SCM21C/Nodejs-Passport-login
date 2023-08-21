@@ -11,7 +11,7 @@ const mongoURI = require('./config/keys').MongoURI;
 
 // Connect to Mongo
 mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(() => console.log('Connected to MongoDb Atlas'))
+    .then(() => console.log('Connected to MongoDb Atlas...'))
     .catch(err => console.log(err));
 
 // The below is also a way to connect to atlas mongo db connection
@@ -25,6 +25,9 @@ mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
 // EJS
 app.use(expressLayouts);
 app.set('view engine', 'ejs');
+
+// Bodyparser
+app.use(express.urlencoded({ extended: false }));
 
 // Routes
 app.use('/', require('./routes/index'));
