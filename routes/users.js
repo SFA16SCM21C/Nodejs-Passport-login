@@ -65,8 +65,23 @@ router.post('/register', (req, res) => {
                     password
                 });
 
-                console.log(newUser);
-                res.send('hello');
+                // console.log(newUser);
+                // res.send('hello');
+
+                // Generate Hash password and then send to API
+                bcrypt.genSalt(10, (err, salt) => 
+                    bcrypt.hash(newUser.password, salt, (err, hash) => {
+                        if(err) throw err;
+                        // set password to hashed
+                        newUser.password = hash;
+                        // save the user generated
+                        newUser.save()
+                            .then(user => {
+                                res.redirect('/login');
+                            })
+                            .catch(err => console.log(err0))
+
+                }));
             }
         });
     }
