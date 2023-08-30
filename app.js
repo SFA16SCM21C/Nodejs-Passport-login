@@ -2,6 +2,8 @@ const express = require('express');
 const ejs = require('ejs');
 const expressLayouts = require('express-ejs-layouts');
 const mongoose = require('mongoose');
+const flash = require('connect-flash');
+const session = require('express-session');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -28,6 +30,16 @@ app.set('view engine', 'ejs');
 
 // Bodyparser
 app.use(express.urlencoded({ extended: false }));
+
+// Express session
+app.use(session({
+    secret: 'secret',
+    resave: true,
+    saveUninitialized: true
+}));
+
+// Connect flash
+app.use(flash());
 
 // Routes
 app.use('/', require('./routes/index'));
