@@ -17,6 +17,8 @@ router.post('/login', (req, res, next) => {
     })(req, res, next);
   });
 
+  //testing out hte code frequency thing
+
 // Register Page
 router.get('/register', (req, res) => res.render('register'));
 
