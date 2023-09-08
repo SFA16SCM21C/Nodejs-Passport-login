@@ -9,7 +9,7 @@ const User = require('../models/User');
 router.get('/login', (req, res) => res.render('login'));
 
 // Login Handle
-router,post('/login', (req, res, next) => {
+router.post('/login', (req, res, next) => {
     passport.authenticate('/local', {
       successRedirect: '/dashboard',
       failureRedirect: '/users/login',
